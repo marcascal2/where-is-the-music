@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<servlet>
+		<servlet-name>TicketmasterEventsGetController</servlet-name>
+		<servlet-class>aiss.controller.TicketmasterEventsGetController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TicketmasterEventsGetController</servlet-name>
+		<url-pattern>/TicketmasterEventsGet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EventInformationGetController</servlet-name>
+		<servlet-class>aiss.controller.EventInformationGetController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EventInformationGetController</servlet-name>
+		<url-pattern>/EventInformationGet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GoogleMapsGetPlacesController</servlet-name>
+		<servlet-class>aiss.controller.GoogleMapsGetPlacesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleMapsGetPlacesController</servlet-name>
+		<url-pattern>/GoogleMapsGetPlaces</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GoogleCalendarAddEventController</servlet-name>
+		<servlet-class>aiss.controller.GoogleCalendarAddEventController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleCalendarAddEventController</servlet-name>
+		<url-pattern>/GoogleCalendarAddEvent</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- ARTIST PAGE CONTROLLER -->
+
+	<servlet>
+		<servlet-name>ArtistPageController</servlet-name>
+		<servlet-class>aiss.controller.ArtistPageController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ArtistPageController</servlet-name>
+		<url-pattern>/ArtistPage</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- SpotifyAuthController -->
+	<servlet>
+		<description />
+		<servlet-name>SpotifyAuthController</servlet-name>
+		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>Spotify</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpotifyAuthController</servlet-name>
+		<url-pattern>/AuthController/Spotify</url-pattern>
+	</servlet-mapping>
+	
+	<!--SpotifyOAuth2Callback -->
+	<servlet>
+		<description />
+		<servlet-name>SpotifyOAuth2Callback</servlet-name>
+		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>Spotify</param-value>
+		</init-param>
+		<init-param>
+			<param-name>onSuccess</param-name>
+			<param-value>redirect:/ArtistPage</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpotifyOAuth2Callback</servlet-name>
+		<url-pattern>/oauth2callback/Spotify</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- GoogleCalendarAuthController -->
+	<servlet>
+		<description />
+		<servlet-name>GoogleCalendarAuthController</servlet-name>
+		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>GoogleCalendar</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleCalendarAuthController</servlet-name>
+		<url-pattern>/AuthController/GoogleCalendar</url-pattern>
+	</servlet-mapping>
+	
+	<!--GoogleCalendarOAuth2Callback -->
+	<servlet>
+		<description />
+		<servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>GoogleCalendar</param-value>
+		</init-param>
+		<init-param>
+			<param-name>onSuccess</param-name>
+			<param-value>redirect:/GoogleCalendarAddEvent</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+		<url-pattern>/oauth2callback/GoogleCalendar</url-pattern>
+	</servlet-mapping>
+
+	<!-- API SERVLETS Y DEMÁS -->
+	<!-- Añade el prefijo a la api -->
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/api</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>aiss.api.WITMApplication</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	
+		<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

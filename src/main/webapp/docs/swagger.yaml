@@ -1,0 +1,518 @@
+swagger: '2.0'
+info:
+  description: API de la aplicación WITM
+  version: 1.0.0
+  title: Where Is The Music API
+  # put the contact info for your development or API team
+  contact:
+    email: maariacasasola@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Artistas
+  description: Llamadas de artista
+  
+- name: Eventos
+  description: Llamadas a los eventos
+  
+- name: Lugares
+  description: Llamadas a los lugares
+
+- name: Canciones
+  description: Llamadas a las canciones
+
+paths:
+  /events:
+    get:
+      tags:
+      - Eventos
+      summary: Devuelve todos los eventos
+      operationId: getEventos 
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Todos los eventos devueltos
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Evento'
+        400:
+          description: Hay un error
+    post: 
+      tags:
+      - Eventos
+      summary: Añade un nuevo evento
+      operationId: addEvento
+      consumes: 
+      - application/json
+      produces: 
+      - application/json
+      responses:
+        200:
+          description: Evento añadido correctamente
+          schema:
+            $ref: '#/definitions/Evento'
+        400:
+          description: El evento introducido para añadir no es correcto
+    put:
+      tags: 
+        - Eventos
+      summary: Actualiza un evento
+      operationId: updateEvent
+      responses:
+        200:
+          description: Evento actualizado correctamente
+        404:
+          description: El evento que quieres actualizar no existe
+        400:
+          description: Ha ocurrido un error al actualizar el evento
+
+  /events/{eventId}:
+    get:
+      tags:
+        - Eventos
+      summary: Devuelve el evento buscado por su id
+      operationId: getEvent 
+      parameters:
+      - name: eventId
+        in: path
+        description: El id del Evento que queremos buscar
+        required: true
+        type: string
+      responses:
+        200:
+          description: Devuelve el evento encontrado
+          schema:
+            $ref: '#/definitions/Artista'
+        404:
+          description: No hay un evento con ese id
+    delete:
+      tags: 
+        - Eventos
+      summary: Elimina el evento con id dado
+      operationId: removeEvent
+      parameters: 
+        - name: eventId
+          in: path
+          description: El id del evento a eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Evento eliminado correctamente
+        404:
+          description: El evento con este id no existe
+
+  /artists:
+    get:
+      tags:
+      - Artistas
+      summary: Devuelve todos los artistas
+      operationId: getArtists
+      description: |
+        Puedes buscar todos los artistas que se encuentran en la api
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Todos los artistas devueltos
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Artista'
+        400:
+          description: Hay un error
+    post:
+      tags:
+      - Artistas
+      summary: Añade un artista
+      operationId: addArtist
+      description: 
+        Añade un artista al repositor
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Artista
+        description: Artista que se quiere añadir
+        required: true
+        schema:
+          $ref: '#/definitions/Artista'
+      responses:
+        201:
+          description: Artista añadido con exito
+        400:
+          description: Parametro invalido
+        409:
+          description: Ya existe un artista con este id
+    put:
+      tags: 
+        - Artistas
+      summary: Actualiza un artista
+      operationId: actualizaArtista
+      responses:
+        200:
+          description: Artista actualizado correctamente
+        404:
+          description: El artista que quieres actualizar no existe
+        400:
+          description: Ha ocurrido un error al actualizar el artista
+  /artists/{artistId}:
+    get:
+      tags: 
+      - Artistas
+      summary: Devuelve el artista según su id
+      operationId: getArtista
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: artistId
+        description: El id del Artista que queremos buscar
+        required: true
+        type: string
+      responses:
+        200:
+          description: Devuelve el artista encontrado
+          schema:
+            $ref: '#/definitions/Artista'
+        404:
+          description: No hay un artista con ese id
+    delete:
+      tags: 
+        - Artistas
+      summary: Elimina el artista con id dado
+      operationId: eliminaArtista
+      parameters: 
+        - name: artistId
+          in: path
+          description: El id del artista a eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Artista eliminado correctamente
+        404:
+          description: El artista con este id no existe
+  /artists/{artistId}/songs:
+    post:
+      tags:
+      - Artistas
+      summary: Añade una canción a un artista
+      operationId: añadeCancionArtista
+      description: 
+        Añade una canción a la lista de canciones de un artista
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: artistId
+        in: path
+        description: El id del artista al que queremos añadir la canción
+        required: true
+        type: string
+      responses:
+        201:
+          description: Canción añadida con exito
+        400:
+          description: Parametro invalido
+        409:
+          description: Ya existe esa cancion en la lista
+  /artists/{artistId}/songs/{trackId}:
+    delete:
+      tags:
+      - Artistas
+      summary: Elimina una cancion de un artista
+      operationId: eliminaCancionArtista
+      parameters: 
+        - name: artistId
+          in: path
+          description: El id del artista del que se elimina la cancion
+          required: true
+          type: string
+        - name: trackId
+          in: path
+          description: El id de la cancion que se desea eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Artista eliminado correctamente
+        404:
+          description: El artista con este id no existe
+  /places:
+    get:
+      tags: 
+      - Lugares
+      summary: Devuelve todos los lugares
+      operationId: getLugares
+      produces: 
+      - application/json
+      responses:
+        200:
+          description: Todos los lugares devueltos
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Lugar'
+        400:
+          description: Hay un error
+    post:
+      tags:
+        - Lugares
+      summary: Añade un nuevo lugar
+      operationId: addLugar
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Lugar
+        description: Lugar que se quiere añadir
+        required: true
+        schema:
+          $ref: '#/definitions/Lugar'
+      responses:
+        201:
+          description: Lugar añadido con exito
+        400:
+          description: Parametro invalido
+        409:
+          description: Ya existe un lugar con este nombre
+          
+  /places/{placeId}:
+    get:
+      tags:
+        - Lugares
+      summary: Devuelve el lugar buscado por su id
+      operationId: getPlacesById
+      parameters: 
+      - name: placeId
+        in: path
+        description: El id del lugar que queremos buscar
+        required: true
+        type: string
+      responses:
+        200:
+          description: Devuelve el lugar encontrado
+          schema: 
+            $ref: '#/definitions/Lugar'
+        404: 
+          description: No hay un lugar con ese id
+    delete:
+      tags: 
+        - Lugares
+      summary: Elimina el lugar con id dado
+      operationId: removePlace
+      parameters: 
+        - name: placeId
+          in: path
+          description: Id del lugar que se quiere eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lugar eliminado correctamente
+        404:
+          description: El lugar con este id no existe
+          
+  /places/search:
+    get:
+      tags:
+        - Lugares
+      summary: Devuelve el lugar buscado por su nombre
+      operationId: getPlacesByName
+      parameters:
+      - name: name
+        in: query
+        description: El nombre del lugar que queremos buscar
+        required: true
+        type: string
+      responses:
+        200:
+          description: Devuelve el lugar encontrado
+          schema:
+            $ref: '#/definitions/Lugar'
+        404:
+          description: No hay un lugar con ese nombre
+      
+  /tracks:
+    get:
+      tags:
+      - Canciones
+      summary: Devuelve todas las canciones
+      operationId: getCanciones 
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Todas las canciones devueltas
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cancion'
+        400:
+          description: Hay un error
+  
+  /tracks/{artistId}:
+    get:
+      tags:
+      - Canciones
+      summary: Devuelve las canciones de un artista
+      operationId: getTrackByArtista
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: artistId
+          description: ID del artista
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lista las canciones de un artista
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cancion'
+        404:
+          description: No hay ninguna cancion de ese artista
+          
+  /tracks/search:
+    get:
+      tags:
+      - Canciones
+      summary: Devuelve las canciones con un nombre determinado
+      operationId: getTracksByName
+      produces:
+      - application/json
+      parameters:
+        - in: query
+          name: name
+          description: Nombre de la cancion
+          required: true
+          type: string
+      responses:
+        200:
+          description: Lista de canciones con un nombre determinado
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cancion'
+        404:
+          description: No hay ninguna cancion con ese nombre
+      
+definitions:
+  Evento:
+    type: object
+    required:
+    - id
+    - nombre
+    - artistas
+    - sala
+    - descripcion
+    properties:
+      id:
+        type: string
+        example: e1231
+      nombre:
+        type: string
+        example: "Festival de música de Sevilla"
+      artistas:
+        type: array
+        items: 
+          $ref: '#/definitions/Artista'
+      descripcion:
+        type: string
+        example: "En este evento participan los mejores artistas de la provincia"
+      lugar:
+        $ref: '#/definitions/Lugar'
+
+
+  Artista:
+    type: object
+    required:
+    - id
+    - name
+    - canciones
+    - generos
+    - popularidad
+    properties:
+      id:
+        type: string
+        example: 1234
+      name:
+        type: string
+        example: Rihanna
+      generos:
+        type: string
+        example: Pop, Rock, Trap
+      popularidad:
+        type: number
+        example: 83
+      canciones:
+        $ref: '#/definitions/Cancion'
+  Cancion:
+    type: object
+    required: 
+    - id
+    - name
+    properties:
+      id:
+        type: string
+        example: 123
+      name:
+        type: string
+        example: Love on the brain
+        
+  Lugar:
+    type: object
+    required:
+    - name
+    - placeId
+    properties:
+      name:
+        type: string
+        example: Sala Fnatic
+      placeId:
+        type: string
+        example: 123
+      latitud:
+        type: number
+        example: 50.1
+      longitud:
+        type: number
+        example: 100.0
+      direccion:
+        type: string
+        example: Avenida Reina Mercedes
+      codigoPostal:
+        type: integer
+        example: 41740
+        
+
+# schemes:
+#  - http
+# host: whereisthemusic.appspot.com
+# basePath: /api
+# Added by API Auto Mocking Plugin
+# host: whereisthemusic.appspot.com
+# basePath: /api/
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /WITMusic/WhereIsTheMusicAPI/1.0.0
+# schemes:
+#  - http
+# Added by API Auto Mocking Plugin
+schemes:
+ - https
+ - http

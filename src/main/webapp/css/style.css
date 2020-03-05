@@ -1,0 +1,429 @@
+body {
+	position: relative;
+	overflow-x: hidden;
+}
+
+header.masthead {
+	padding-top: 3rem;
+	padding-bottom: calc(8rem - 72px);
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(40, 50, 161,
+		0.8)), to(rgba(144, 167, 53, 0.8))),
+		url("../assets/backgrounds/Background_Tomorrowland.jpg");
+	background: linear-gradient(to bottom, rgba(40, 50, 161, 0.8) 0%,
+		rgba(144, 167, 53, 0.8) 100%),
+		url("../assets/backgrounds/Background_Tomorrowland.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+}
+
+/* .font-logo {
+    font-family: 'Concert One', cursive !important;
+} */
+.main-logo {
+	padding-bottom: 2rem;
+}
+
+.h1-WITM {
+	font-size: 3em;
+	text-align: center;
+	padding: 1%;
+}
+
+.partner-cards {
+	display: flex;
+	flex-direction: row;
+}
+
+.partner-card {
+	border-radius: 3%;
+	margin: 4%;
+	width: 50%;
+}
+
+.busqueda-ciudad {
+	justify-content: center;
+	flex-direction: row;
+	display: flex;
+}
+
+.busqueda-ciudad input {
+	width: 100% !important;
+}
+
+.ciudad-input {
+	width: 40%;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.subtitle {
+	color: rgba(255, 255, 255, .75);
+	font-weight: 500 !important;
+	font-size: 1.15em;
+	margin-bottom: 3rem;
+}
+
+#colum {
+	width: 240px;
+	justify-content: center;
+	padding: 4%;
+}
+
+#carta {
+	background-attachment: fixed;
+	height: max-content;
+	background-color: rgb(255, 255, 255);
+	border-radius: 24px 24px 24px 24px;
+	-moz-border-radius: 24px 24px 24px 24px;
+	-webkit-border-radius: 24px 24px 24px 24px;
+	border: 0px solid #000000;
+	position: relative;
+	width: 24rem;
+}
+
+.event-image {
+	height: 250px;
+	width: 400px;
+	padding: 10px;
+}
+
+.inner {
+	font-family: 'Trebuchet MS';
+	background-color: lightblue;
+	position: absolute;
+	background: center;
+	width: 100%;
+	height: 100%;
+}
+
+.mapa {
+	height: 70%;
+}
+
+.how-to-use {
+	margin-top: 5%;
+	margin-bottom: 4%;
+}
+
+.popup-image {
+	height: 200px;
+	width: 300px;
+}
+
+.more-information-button {
+	margin: 10px;
+}
+
+/* CSS DE LA PÃ�GINA DE UN EVENTO */
+.event-title-h1 {
+	font-size: 4.5rem;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+.event-information {
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+}
+
+.event-information-cover {
+	width: 100%;
+}
+
+.event-information-content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+}
+
+.artist-card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.btn-information-artist {
+	margin-bottom: 5%;
+}
+
+.add-to-calendar-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.add-to-calendar-card-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1.25rem;
+}
+
+.add-to-calendar-card-content input {
+	border-radius: 4px;
+	width: 100%;
+	padding: 5px;
+}
+
+.btn-add-calendar {
+	margin-top: 7%;
+	width: 50%;
+}
+
+.comment-card {
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+}
+
+.comments-card-body {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 1 1 auto;
+	padding: 1.25rem;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 1 auto;
+	padding: 1.25rem;
+}
+
+.comment-image {
+	padding: 10px;
+}
+
+.footer {
+	bottom: 0;
+	width: 100%;
+}
+
+.footer-container {
+	text-align: center;
+	height: 100%;
+	padding: 1rem;
+}
+
+/* CSS DE LA PAGINA DE ARTISTA */
+.top-tracks {
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-top: 5%;
+}
+
+.datosArtista {
+	display: flex;
+	width: 50%;
+	flex-direction: column;
+	justify-content: inherit;
+}
+
+.imagenArtista {
+	text-align: center;
+}
+
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+
+.reproductores {
+	margin-top: 2.284rem;
+	display: flex;
+	height: 350px;
+	width: -webkit-fill-available;
+	justify-content: space-evenly;
+	margin-right: -15px;
+	margin-left: -15px;
+	margin-bottom: 2.284rem;
+}
+
+.reproductor {
+	margin-bottom: 3%;
+	width: 300px;
+	height: 350px;
+}
+
+.top-videos {
+	width: -webkit-fill-available;
+	margin-bottom: 2.284rem;
+	margin-top: 2.284rem;
+	border: 0;
+	border-radius: 3px;
+	justify-content: space-evenly;
+	display: flex;
+	flex-direction: row;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.video {
+	width: 600px;
+	height: 350px;
+	flex: 0 0 50%;
+	max-width: 95%;
+	position: relative;
+}
+
+.background-foto {
+	height: 380px;
+	background-position: top;
+	background-size: cover;
+	background-image: url(../assets/backgrounds/Background_Tomorrowland.jpg);
+}
+
+.main {
+	background: #fff;
+	position: relative;
+	z-index: 3;
+}
+
+.carta-artista {
+	margin: -80px 60px 30px;
+	border-radius: 6px;
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px
+		rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+
+.container {
+	max-width: 1140px;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-right: -15px;
+	margin-left: -15px;
+	margin-bottom: 2.284rem;
+	padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.ml-auto {
+	margin-left: auto !important;
+}
+
+.mr-auto {
+	margin-right: auto !important;
+}
+
+.profile {
+	text-align: center;
+}
+
+.profile img {
+	max-width: 200px;
+	width: 100%;
+	margin: 0 auto;
+	transform: translate3d(0, -50%, 0);
+}
+
+.name {
+	margin-top: -80px;
+}
+
+.footer-container {
+	padding: 20px;
+}
+
+@media ( max-width : 700px) {
+	.event-title-h1 {
+		font-size: 1.5rem;
+	}
+	.artist-event-card {
+		width: 22rem !important;
+		margin-bottom: 5%;
+	}
+	.ciudad-input {
+		width: 60%;
+	}
+	.card-body {
+		flex-direction: column;
+	}
+	.event-information-content {
+		flex-direction: column;
+		align-items: center;
+	}
+	#carta {
+		width: 17rem;
+	}
+	.partner-cards {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.partner-card {
+		width: 80%;
+	}
+}
+
+nav#nav1 {
+	padding: 10px 10px;
+	background-color: darksalmon;
+}
+
+nav#nav2 {
+	padding: 10px 10px;
+	background-color: darkseagreen;
+}
+
+.title {
+	margin-top: 30px;
+	min-height: 32px;
+	color: #3c4858;
+	text-decoration: none;
+	font-weight: 700;
+	font-family: Roboto Slab, Times New Roman, serif;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.nav-tittle {
+	margin-bottom: unset;
+	margin-left: 0.5rem;
+	font-size: x-large;
+}
+
+.nav-image {
+	width: 60px;
+	height: auto;
+}
+
+.descripcion-artista {
+	margin: 1.071rem auto 0;
+	margin-bottom: 2.284rem;
+	text-align: center !important;
+}
+
+@media ( max-width : 700px) {
+	.reproductores {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 10%;
+	}
+}
+>>>>>>>
+ArtistPage
