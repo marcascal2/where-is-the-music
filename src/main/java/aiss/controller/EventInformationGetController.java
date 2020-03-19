@@ -58,6 +58,8 @@ public class EventInformationGetController extends HttpServlet {
 			req.setAttribute("sala", sala);
 			req.setAttribute("artistas", evento.getEmbedded().getAttractions());
 			req.setAttribute("evento", evento);
+			req.setAttribute("latitud", evento.getEmbedded().getVenues().get(0).getLocation().getLatitude());
+			req.setAttribute("longitud", evento.getEmbedded().getVenues().get(0).getLocation().getLongitude());
 
 			req.getRequestDispatcher("/event.jsp").forward(req, resp);
 		} catch (Exception e) {
