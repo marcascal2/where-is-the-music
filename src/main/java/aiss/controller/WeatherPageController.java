@@ -27,11 +27,48 @@ public class WeatherPageController extends HttpServlet {
 			OpenWeatherResource weatherRes = new OpenWeatherResource();
 			List<aiss.model.openWeather.List> res = weatherRes.getDatosMeteorolicos(lat, lon);
 			LocalDate today = LocalDate.now();
-			req.setAttribute("predicciones1", weatherRes.getPrediccionesPorDía(res, today.toString()));
-			req.setAttribute("predicciones2", weatherRes.getPrediccionesPorDía(res, today.plusDays(1).toString()));
-			req.setAttribute("predicciones3", weatherRes.getPrediccionesPorDía(res, today.plusDays(2).toString()));
-			req.setAttribute("predicciones4", weatherRes.getPrediccionesPorDía(res, today.plusDays(3).toString()));
-			req.setAttribute("predicciones5", weatherRes.getPrediccionesPorDía(res, today.plusDays(4).toString()));
+			
+			List<aiss.model.openWeather.List> p1 = weatherRes.getPrediccionesPorDía(res, today.toString());
+			List<aiss.model.openWeather.List> p2 = weatherRes.getPrediccionesPorDía(res, today.plusDays(1).toString());
+			List<aiss.model.openWeather.List> p3 = weatherRes.getPrediccionesPorDía(res, today.plusDays(2).toString());
+			List<aiss.model.openWeather.List> p4 = weatherRes.getPrediccionesPorDía(res, today.plusDays(3).toString());
+			List<aiss.model.openWeather.List> p5 = weatherRes.getPrediccionesPorDía(res, today.plusDays(4).toString());
+			
+			Boolean masDeUno1 = weatherRes.getNumeroPredicciones(p1).size() > 1;
+			Boolean masDeUno2 = weatherRes.getNumeroPredicciones(p2).size() > 1;
+			Boolean masDeUno3 = weatherRes.getNumeroPredicciones(p3).size() > 1;
+			Boolean masDeUno4 = weatherRes.getNumeroPredicciones(p4).size() > 1;
+			Boolean masDeUno5 = weatherRes.getNumeroPredicciones(p5).size() > 1;
+			
+			req.setAttribute("prediccion1", p1.get(0));
+			p1.remove(0);
+			req.setAttribute("predicciones1", p1);
+			req.setAttribute("size1", weatherRes.getNumeroPredicciones(p1));
+			req.setAttribute("masDeUno1", masDeUno1);
+			
+			req.setAttribute("prediccion2", p2.get(0));
+			p2.remove(0);
+			req.setAttribute("predicciones2", p2);
+			req.setAttribute("size2", weatherRes.getNumeroPredicciones(p2));
+			req.setAttribute("masDeUno2", masDeUno2);
+			
+			req.setAttribute("prediccion3", p3.get(0));
+			p3.remove(0);
+			req.setAttribute("predicciones3", p3);
+			req.setAttribute("size3", weatherRes.getNumeroPredicciones(p3));
+			req.setAttribute("masDeUno3", masDeUno3);
+			
+			req.setAttribute("prediccion4", p4.get(0));
+			p4.remove(0);
+			req.setAttribute("predicciones4", p4);
+			req.setAttribute("size4", weatherRes.getNumeroPredicciones(p4));
+			req.setAttribute("masDeUno4", masDeUno4);
+			
+			req.setAttribute("prediccion5", p5.get(0));
+			p5.remove(0);
+			req.setAttribute("predicciones5", p5);
+			req.setAttribute("size5", weatherRes.getNumeroPredicciones(p5));
+			req.setAttribute("masDeUno5", masDeUno5);
 			
 			req.getRequestDispatcher("/weather.jsp").forward(req, resp);
 		

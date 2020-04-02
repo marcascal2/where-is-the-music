@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -37,6 +38,14 @@ public class OpenWeatherResource {
 	public List<aiss.model.openWeather.List> getPrediccionesPorDía(List<aiss.model.openWeather.List> lista, String day){	
 		List<aiss.model.openWeather.List> res = new ArrayList<aiss.model.openWeather.List>();
 		res = lista.stream().filter(l -> l.getDtTxt().split(" ")[0].equals(day)).collect(Collectors.toList());
+		return res;
+	}
+	
+	public List<Integer> getNumeroPredicciones(List<aiss.model.openWeather.List> lista){
+		List<Integer> res = new ArrayList<Integer>();
+		if(lista.size()>1) {
+			IntStream.range(1, lista.size()+1).forEach(i -> res.add(i));
+		}
 		return res;
 	}
 }

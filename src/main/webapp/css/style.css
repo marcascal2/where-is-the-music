@@ -432,3 +432,22 @@ nav#nav2 {
 		padding: 10%;
 	}
 }
+
+/* PAGINA DE PREDICCIONES */
+.predicciones{
+	display: flex;
+    flex-direction: column;
+}
+
+.predicciones-fila{
+	display: flex;
+    flex-direction: row;
+}
+
+.prediccion{
+	margin: 2%;
+}
+
+.carousel{
+	interval: false;
+}
