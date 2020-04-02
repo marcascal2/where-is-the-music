@@ -1,6 +1,5 @@
 package aiss.model.resource;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -8,7 +7,6 @@ import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
 import aiss.model.googlePlaces.PlaceDetails.PlaceDetailsResponse;
-import aiss.model.googlePlaces.PlaceDetails.Result;
 import aiss.model.googlePlaces.PlaceDetails.Review;
 
 public class PlaceDetailsResource {

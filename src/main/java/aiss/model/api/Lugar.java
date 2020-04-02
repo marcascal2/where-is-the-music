@@ -1,8 +1,5 @@
 package aiss.model.api;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Lugar {
 	private String nombre;
 	private String id;
@@ -76,8 +73,5 @@ public class Lugar {
 	public String toString() {
 		return "Lugar [nombre=" + nombre + ", direccion=" + direccion + ", id=" + id + "]";
 	}
-
-	
-	
 
 }

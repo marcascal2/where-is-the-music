@@ -3,10 +3,12 @@
 <%@include file="includes/header.jsp"%>
 
 <script>
-var eventoAñadido = <%=request.getAttribute("eventoAñadido")%>;
-if(eventoAñadido) {
-	window.alert("El evento se ha añadido correctamente a tu calendario");
-}
+	var eventoAñadido =
+<%=request.getAttribute("eventoAñadido")%>
+	;
+	if (eventoAñadido) {
+		window.alert("El evento se ha añadido correctamente a tu calendario");
+	}
 </script>
 
 <div class="event-information">
@@ -32,14 +34,26 @@ if(eventoAñadido) {
 						</label>
 
 						<form method="GET" action="/ArtistPage">
-							<input type="hidden" id="nombreArtista"
-								name="nombreArtista" value="<c:out value="${artista.name}" />">
+							<input type="hidden" id="nombreArtista" name="nombreArtista"
+								value="<c:out value="${artista.name}" />">
 							<button class="btn btn-primary btn-information-artist"
 								type="submit">Más información...</button>
 						</form>
 					</div>
 				</div>
 			</c:forEach>
+		</div>
+		<div class="event-information-middle">
+			<h5>¡Descubre la predicción temporal para tu evento!</h5>
+			<form method="GET" action="/WeatherPage">
+				<input type="hidden" id="latitud" name="latitud"
+					value="<c:out value="${evento.embedded.venues[0].location.latitude}" />">
+				<input type="hidden" id="longitud" name="longitud"
+					value="<c:out value="${evento.embedded.venues[0].location.longitude}" />">
+				<button class="btn btn-primary btn-information-weather"
+					type="submit">¡Quiero saber el tiempo!</button>
+			</form>
+
 		</div>
 		<div class="event-information-right">
 			<form action="/GoogleCalendarAddEvent" method="POST" class="card"
@@ -58,8 +72,9 @@ if(eventoAñadido) {
 							Hora:
 							<c:out value="${evento.dates.start.localTime}" />
 						</p>
-						<input type="hidden" name="urlEvento" value="<c:out value="${evento.links.self.href}" />">
-						<input type="text" name="calendarId"
+						<input type="hidden" name="urlEvento"
+							value="<c:out value="${evento.links.self.href}" />"> <input
+							type="text" name="calendarId"
 							placeholder="Introduce tu correo de Google Calendar...">
 						<input type="hidden" name="date"
 							value="<c:out value="${evento.dates.start.localDate}" />">
@@ -67,6 +82,7 @@ if(eventoAñadido) {
 							value="<c:out value="${evento.name}" />">
 						<button class="btn btn-primary btn-add-calendar" type="submit">Añadir</button>
 					</div>
+				</div>
 			</form>
 		</div>
 	</div>

@@ -1,7 +1,5 @@
 package aiss.model.googleCalendar;
 
-import com.google.api.client.util.DateTime;
-
 public class EventDateTime {
 	private String dateTime;
 

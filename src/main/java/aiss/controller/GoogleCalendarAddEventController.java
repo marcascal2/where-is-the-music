@@ -1,15 +1,11 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.google.api.client.util.DateTime;
 
 import aiss.model.googleCalendar.EventDateTime;
 import aiss.model.googleCalendar.GoogleCalendarEvent;
@@ -17,13 +13,13 @@ import aiss.model.resource.GoogleCalendarResource;
 
 public class GoogleCalendarAddEventController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(GoogleCalendarAddEventController.class.getName());
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String accessToken = (String) req.getSession().getAttribute("GoogleCalendar-token");
 		EventDateTime start = new EventDateTime(req.getParameter("date")+"T21:00:00-00:00");
-		System.out.println(start);
 		EventDateTime end = new EventDateTime(req.getParameter("date")+"T23:00:00-00:00");
 		String name = req.getParameter("eventName");
 		String calendarId = req.getParameter("calendarId");
@@ -34,14 +30,12 @@ public class GoogleCalendarAddEventController extends HttpServlet {
 		if (accessToken != null && !"".equals(accessToken)) {
 				GoogleCalendarResource gcResource = new GoogleCalendarResource(accessToken);
 				GoogleCalendarEvent evento = new GoogleCalendarEvent(calendarId, start, end, name);
-				System.out.println(calendarId+" TENGO ACCESS TOKEN ");
 				gcResource.addEvent(evento);
 				req.setAttribute("urlEvento", urlEvento);
 				req.setAttribute("eventoAñadido", true);
 				req.getRequestDispatcher("/EventInformationGet").forward(req, resp);
 		} else {
 			log.info("Trying to access Google Calendar without an access token, redirecting to OAuth servlet");
-			System.out.println(calendarId);
 			req.getRequestDispatcher("/AuthController/GoogleCalendar").forward(req, resp);
 		}
 	}

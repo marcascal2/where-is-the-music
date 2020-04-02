@@ -41,7 +41,6 @@ public class ArtistPageController extends HttpServlet{
 		// Youtube
 		YoutubeResource youtubeRes = new YoutubeResource();
 		List<Id> ids = youtubeRes.getVideos(query);
-		System.out.println(ids);
 		if(ids != null) {
 			if (ids.size() > 1) {
 				for (Id idY : ids) {

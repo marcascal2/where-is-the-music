@@ -80,7 +80,7 @@ html, body {
 				<li class="nav-item active"><a class="nav-link"
 					href="/TicketmasterEventsGet?citySearch=">Eventos</a></li>
 				<li class="nav-item active"><a class="nav-link"
-					href="about.html">Sobre nosotros</a></li>
+					href="about.html">Sobre mí</a></li>
 			</ul>
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
