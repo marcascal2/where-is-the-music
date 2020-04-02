@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -43,6 +44,38 @@ public class Main {
     private Integer tempKf;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Main() {
+    }
+
+    /**
+     * 
+     * @param feelsLike
+     * @param tempMax
+     * @param temp
+     * @param seaLevel
+     * @param humidity
+     * @param pressure
+     * @param tempKf
+     * @param grndLevel
+     * @param tempMin
+     */
+    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer seaLevel, Integer grndLevel, Integer humidity, Integer tempKf) {
+        super();
+        this.temp = temp;
+        this.feelsLike = feelsLike;
+        this.tempMin = tempMin;
+        this.tempMax = tempMax;
+        this.pressure = pressure;
+        this.seaLevel = seaLevel;
+        this.grndLevel = grndLevel;
+        this.humidity = humidity;
+        this.tempKf = tempKf;
+    }
 
     @JsonProperty("temp")
     public Double getTemp() {

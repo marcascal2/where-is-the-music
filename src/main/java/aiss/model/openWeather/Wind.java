@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -22,6 +23,24 @@ public class Wind {
     private Integer deg;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Wind() {
+    }
+
+    /**
+     * 
+     * @param deg
+     * @param speed
+     */
+    public Wind(Double speed, Integer deg) {
+        super();
+        this.speed = speed;
+        this.deg = deg;
+    }
 
     @JsonProperty("speed")
     public Double getSpeed() {

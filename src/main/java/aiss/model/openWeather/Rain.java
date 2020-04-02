@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -19,6 +20,22 @@ public class Rain {
     private Double _3h;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Rain() {
+    }
+
+    /**
+     * 
+     * @param _3h
+     */
+    public Rain(Double _3h) {
+        super();
+        this._3h = _3h;
+    }
 
     @JsonProperty("3h")
     public Double get3h() {

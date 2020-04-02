@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -37,6 +38,34 @@ public class City {
     private Integer sunset;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public City() {
+    }
+
+    /**
+     * 
+     * @param country
+     * @param coord
+     * @param sunrise
+     * @param timezone
+     * @param sunset
+     * @param name
+     * @param id
+     */
+    public City(Integer id, String name, Coord coord, String country, Integer timezone, Integer sunrise, Integer sunset) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.coord = coord;
+        this.country = country;
+        this.timezone = timezone;
+        this.sunrise = sunrise;
+        this.sunset = sunset;
+    }
 
     @JsonProperty("id")
     public Integer getId() {
