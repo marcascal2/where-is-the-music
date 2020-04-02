@@ -45,7 +45,7 @@
 		</div>
 		<div class="event-information-middle">
 			<h5>¡Descubre la predicción temporal para tu evento!</h5>
-			<form method="GET" action="/WeatherPage">
+			<form action="/WeatherPage" method="GET">
 				<input type="hidden" id="latitud" name="latitud"
 					value="<c:out value="${evento.embedded.venues[0].location.latitude}" />">
 				<input type="hidden" id="longitud" name="longitud"

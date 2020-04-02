@@ -1,9 +1,7 @@
 package aiss.model.resource;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -28,7 +26,6 @@ public class OpenWeatherResource {
 		ClientResource cr = new ClientResource(url);
 		try {
 			OpenWeatherResponse owr = cr.get(OpenWeatherResponse.class);
-			System.out.println(owr.getCnt());
 			List<aiss.model.openWeather.List> l = owr.getList();
 			return l;
 		}catch (ResourceException e){
@@ -37,19 +34,10 @@ public class OpenWeatherResource {
 		}
 	}
 	
-	public Map<String, aiss.model.openWeather.List> getPrediccionesPorDía(List<aiss.model.openWeather.List> lista){	
-		Map<String, aiss.model.openWeather.List> map = lista.stream().collect(Collectors.toMap(aiss.model.openWeather.List::getDtTxt, l -> l));
-		
-		Map<String, aiss.model.openWeather.List> m = new TreeMap<>();
-		
-		Set<String> fechas = map.keySet();
-		
-		for(String f: fechas) {
-			String dia = f.split(" ")[0];
-			m.put(dia, map.get(f));
-		}
-		
-		return m;
+	public List<aiss.model.openWeather.List> getPrediccionesPorDía(List<aiss.model.openWeather.List> lista, String day){	
+		List<aiss.model.openWeather.List> res = new ArrayList<aiss.model.openWeather.List>();
+		res = lista.stream().filter(l -> l.getDtTxt().split(" ")[0].equals(day)).collect(Collectors.toList());
+		return res;
 	}
 }
 
