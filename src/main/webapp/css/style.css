@@ -310,6 +310,11 @@ header.masthead {
 	margin-left: auto;
 }
 
+#div-error{
+	display: flex;
+    flex-direction: column;
+}
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
