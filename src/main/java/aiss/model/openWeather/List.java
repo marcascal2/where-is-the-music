@@ -45,7 +45,17 @@ public class List {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    /**
+    
+    private String image;
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/**
      * No args constructor for use in serialization
      * 
      */

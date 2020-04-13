@@ -28,6 +28,12 @@ public class OpenWeatherResource {
 		try {
 			OpenWeatherResponse owr = cr.get(OpenWeatherResponse.class);
 			List<aiss.model.openWeather.List> l = owr.getList();
+			for(aiss.model.openWeather.List list: l ) {
+				Double max = convertKelvinToCelsius(list.getMain().getTempMax());
+				list.getMain().setTempMax(Math.round(max * 100d) / 100d);
+				Double min = convertKelvinToCelsius(list.getMain().getTempMin());
+				list.getMain().setTempMin(Math.round(min * 100d) / 100d);	
+			}
 			return l;
 		}catch (ResourceException e){
 			log.warning("Error al tratar de acceder a la búsqueda: " + e.getMessage());
@@ -35,6 +41,10 @@ public class OpenWeatherResource {
 		}
 	}
 	
+	private Double convertKelvinToCelsius(Double temp) {
+		return (temp-273.15);		
+	}
+
 	public List<aiss.model.openWeather.List> getPrediccionesPorDía(List<aiss.model.openWeather.List> lista, String day){	
 		List<aiss.model.openWeather.List> res = new ArrayList<aiss.model.openWeather.List>();
 		res = lista.stream().filter(l -> l.getDtTxt().split(" ")[0].equals(day)).collect(Collectors.toList());
@@ -48,5 +58,6 @@ public class OpenWeatherResource {
 		}
 		return res;
 	}
+	
 }
 
