@@ -12,12 +12,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "pod"
+    "3h"
 })
-public class Sys {
+public class Snow {
 
-    @JsonProperty("pod")
-    private String pod;
+    @JsonProperty("3h")
+    private Double _3h;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -25,26 +25,26 @@ public class Sys {
      * No args constructor for use in serialization
      * 
      */
-    public Sys() {
+    public Snow() {
     }
 
     /**
      * 
-     * @param pod
+     * @param _3h
      */
-    public Sys(String pod) {
+    public Snow(Double _3h) {
         super();
-        this.pod = pod;
+        this._3h = _3h;
     }
 
-    @JsonProperty("pod")
-    public String getPod() {
-        return pod;
+    @JsonProperty("3h")
+    public Double get3h() {
+        return _3h;
     }
 
-    @JsonProperty("pod")
-    public void setPod(String pod) {
-        this.pod = pod;
+    @JsonProperty("3h")
+    public void set3h(Double _3h) {
+        this._3h = _3h;
     }
 
     @JsonAnyGetter

@@ -308,6 +308,11 @@ header.masthead {
 	margin-left: auto;
 }
 
+#div-error {
+	display: flex;
+	flex-direction: column;
+}
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -316,7 +321,7 @@ header.masthead {
 	margin-left: -15px;
 	margin-bottom: 2.284rem;
 	padding-top: 2%;
-    padding-bottom: 2%;
+	padding-bottom: 2%;
 }
 
 .ml-auto {
@@ -373,7 +378,6 @@ header.masthead {
 		justify-content: center;
 		align-items: center;
 	}
-	
 	.partner-card {
 		width: 80%;
 	}
@@ -425,5 +429,50 @@ nav#nav2 {
 		padding: 10%;
 	}
 }
->>>>>>>
-ArtistPage
+
+/* PAGINA DE PREDICCIONES */
+.event-information-middle {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.middle-text {
+	text-align: center;
+}
+
+.carousel-item {
+	width: 511px;
+	height: 300px !important;
+}
+
+.predicciones {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 3%;
+	background: url("assets/prediccionesFondo.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.predicciones-fila {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.prediccion {
+	margin: 4%;
+	height: 300px;
+	width: 511px !important;
+}
+
+.prediccion-img {
+	border-radius: 30px;
+	height: 300px;
+	width: 511px !important;
+}

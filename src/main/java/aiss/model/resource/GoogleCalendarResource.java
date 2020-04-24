@@ -2,7 +2,6 @@ package aiss.model.resource;
 
 import java.util.logging.Logger;
 
-import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 

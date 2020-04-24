@@ -17,10 +17,13 @@ import aiss.model.resource.TicketmasterResource;
 import aiss.model.ticketmaster.Event;
 
 public class EventInformationGetController extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(GoogleCalendarAddEventController.class.getName());
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		//TicketMaster
 		try {
 			String nombreEvento = "";
 			String urlImagen = "";
@@ -41,7 +44,7 @@ public class EventInformationGetController extends HttpServlet {
 			nombreEvento = evento.getName();
 			urlImagen = evento.getImages().get(0).getUrl();
 			sala = evento.getEmbedded().getVenues().get(0).getName();
-
+			//GoogleMaps
 			try {
 				GoogleMapsResource googleRes = new GoogleMapsResource();
 				List<Result> result = googleRes.getLugares(sala.replace(" ", "%20"));
@@ -60,7 +63,6 @@ public class EventInformationGetController extends HttpServlet {
 			req.setAttribute("evento", evento);
 			req.setAttribute("latitud", evento.getEmbedded().getVenues().get(0).getLocation().getLatitude());
 			req.setAttribute("longitud", evento.getEmbedded().getVenues().get(0).getLocation().getLongitude());
-
 			req.getRequestDispatcher("/event.jsp").forward(req, resp);
 		} catch (Exception e) {
 			log.warning(e.getMessage());

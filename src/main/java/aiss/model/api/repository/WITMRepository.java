@@ -6,6 +6,7 @@ import aiss.model.api.Artista;
 import aiss.model.api.Cancion;
 import aiss.model.api.Evento;
 import aiss.model.api.Lugar;
+import aiss.model.api.Prediccion;
 
 public interface WITMRepository {
 	// Métodos de eventos
@@ -67,4 +68,13 @@ public interface WITMRepository {
 	public Collection<Cancion> getCancionesByArtista(String idArtista);
 
 	public Collection<Cancion> getCancionesByName(String name);
+	
+	//Métodos de predicciones
+	public Collection<Prediccion> getAllPredictions();
+	
+	public Collection<Prediccion> getAllPredictionsByDay(String date);
+	
+	public Prediccion getPredictionByDateTime(String dateTime);
+	
+	public Collection<Prediccion> getPredictionsByPlace(Double lat, Double lon);
 }

@@ -9,6 +9,7 @@ import aiss.api.resources.ArtistaResource;
 import aiss.api.resources.CancionResource;
 import aiss.api.resources.EventoResource;
 import aiss.api.resources.LugarResource;
+import aiss.api.resources.PrediccionResource;
 
 public class WITMApplication extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
@@ -19,6 +20,7 @@ public class WITMApplication extends Application {
 		singletons.add(LugarResource.getInstance());
 		singletons.add(EventoResource.getInstance());
 		singletons.add(CancionResource.getInstance());
+		singletons.add(PrediccionResource.getInstance());
 	}
 
 	@Override

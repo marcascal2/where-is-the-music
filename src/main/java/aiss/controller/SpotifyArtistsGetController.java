@@ -2,7 +2,6 @@ package aiss.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +17,11 @@ import aiss.model.spotify.Tracks;
 public class SpotifyArtistsGetController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(SpotifyArtistsGetController.class.getName());
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		SpotifyResource spotifyRes = new SpotifyResource();
-		String id = spotifyRes.getIDArtist("ed sheeran");
+		String id = spotifyRes.getIDArtist(req.getParameter("nombreArtista"));
 		Artist item = spotifyRes.getArtist(id);
 		Image imageURL = spotifyRes.getArtist(id).getImages().get(0);
 		Tracks tracks = spotifyRes.getTopTracks(id);

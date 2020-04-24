@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -16,9 +17,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "weather",
     "clouds",
     "wind",
+    "rain",
     "sys",
     "dt_txt",
-    "rain"
+    "snow"
 })
 public class List {
 
@@ -27,19 +29,63 @@ public class List {
     @JsonProperty("main")
     private Main main;
     @JsonProperty("weather")
-    private java.util.List<Weather> weather = null;
+    private java.util.List<Weather> weather;
     @JsonProperty("clouds")
     private Clouds clouds;
     @JsonProperty("wind")
     private Wind wind;
+    @JsonProperty("rain")
+    private Rain rain;
     @JsonProperty("sys")
     private Sys sys;
     @JsonProperty("dt_txt")
     private String dtTxt;
-    @JsonProperty("rain")
-    private Rain rain;
+    @JsonProperty("snow")
+    private Snow snow;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    
+    private String image;
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/**
+     * No args constructor for use in serialization
+     * 
+     */
+    public List() {
+    }
+
+    /**
+     * 
+     * @param dt
+     * @param rain
+     * @param snow
+     * @param dtTxt
+     * @param weather
+     * @param main
+     * @param clouds
+     * @param sys
+     * @param wind
+     */
+    public List(Integer dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dtTxt, Snow snow) {
+        super();
+        this.dt = dt;
+        this.main = main;
+        this.weather = weather;
+        this.clouds = clouds;
+        this.wind = wind;
+        this.rain = rain;
+        this.sys = sys;
+        this.dtTxt = dtTxt;
+        this.snow = snow;
+    }
 
     @JsonProperty("dt")
     public Integer getDt() {
@@ -91,6 +137,16 @@ public class List {
         this.wind = wind;
     }
 
+    @JsonProperty("rain")
+    public Rain getRain() {
+        return rain;
+    }
+
+    @JsonProperty("rain")
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
+
     @JsonProperty("sys")
     public Sys getSys() {
         return sys;
@@ -111,14 +167,14 @@ public class List {
         this.dtTxt = dtTxt;
     }
 
-    @JsonProperty("rain")
-    public Rain getRain() {
-        return rain;
+    @JsonProperty("snow")
+    public Snow getSnow() {
+        return snow;
     }
 
-    @JsonProperty("rain")
-    public void setRain(Rain rain) {
-        this.rain = rain;
+    @JsonProperty("snow")
+    public void setSnow(Snow snow) {
+        this.snow = snow;
     }
 
     @JsonAnyGetter

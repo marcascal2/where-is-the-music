@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "list",
     "city"
 })
-public class OpenWeatherReponse {
+public class OpenWeatherResponse {
 
     @JsonProperty("cod")
     private String cod;
@@ -26,11 +26,35 @@ public class OpenWeatherReponse {
     @JsonProperty("cnt")
     private Integer cnt;
     @JsonProperty("list")
-    private java.util.List<List> list = null;
+    private java.util.List<aiss.model.openWeather.List> list;
     @JsonProperty("city")
     private City city;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public OpenWeatherResponse() {
+    }
+
+    /**
+     * 
+     * @param city
+     * @param cnt
+     * @param cod
+     * @param message
+     * @param list
+     */
+    public OpenWeatherResponse(String cod, Integer message, Integer cnt, java.util.List<aiss.model.openWeather.List> list, City city) {
+        super();
+        this.cod = cod;
+        this.message = message;
+        this.cnt = cnt;
+        this.list = list;
+        this.city = city;
+    }
 
     @JsonProperty("cod")
     public String getCod() {
@@ -63,12 +87,12 @@ public class OpenWeatherReponse {
     }
 
     @JsonProperty("list")
-    public java.util.List<List> getList() {
+    public java.util.List<aiss.model.openWeather.List> getList() {
         return list;
     }
 
     @JsonProperty("list")
-    public void setList(java.util.List<List> list) {
+    public void setList(java.util.List<aiss.model.openWeather.List> list) {
         this.list = list;
     }
 

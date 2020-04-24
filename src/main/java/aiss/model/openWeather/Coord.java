@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -22,6 +23,24 @@ public class Coord {
     private Double lon;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Coord() {
+    }
+
+    /**
+     * 
+     * @param lon
+     * @param lat
+     */
+    public Coord(Double lat, Double lon) {
+        super();
+        this.lat = lat;
+        this.lon = lon;
+    }
 
     @JsonProperty("lat")
     public Double getLat() {

@@ -1,3 +1,4 @@
+
 package aiss.model.openWeather;
 
 import java.util.HashMap;
@@ -19,6 +20,22 @@ public class Clouds {
     private Integer all;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Clouds() {
+    }
+
+    /**
+     * 
+     * @param all
+     */
+    public Clouds(Integer all) {
+        super();
+        this.all = all;
+    }
 
     @JsonProperty("all")
     public Integer getAll() {

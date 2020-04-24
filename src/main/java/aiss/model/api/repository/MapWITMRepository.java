@@ -10,11 +10,13 @@ import aiss.model.api.Artista;
 import aiss.model.api.Cancion;
 import aiss.model.api.Evento;
 import aiss.model.api.Lugar;
+import aiss.model.api.Prediccion;
 
 public class MapWITMRepository {
 	Map<String, Evento> eventosMap;
 	Map<String, Lugar> lugaresMap;
 	Map<String, Artista> artistasMap;
+	Map<String, Prediccion> prediccionesMap;
 	private static MapWITMRepository instance;
 
 	public static MapWITMRepository getInstance() {
@@ -31,7 +33,8 @@ public class MapWITMRepository {
 		eventosMap = new HashMap<String, Evento>();
 		lugaresMap = new HashMap<String, Lugar>();
 		artistasMap = new HashMap<String, Artista>();
-
+		prediccionesMap = new HashMap<String, Prediccion>();
+		
 		   //CREO UN LUGAR
 			Lugar l = new Lugar();
 			l.setId("1");
@@ -76,6 +79,15 @@ public class MapWITMRepository {
 			l4.setDireccion("Avenida de Luis Aragonés - Madrid");
 			l4.setLat(79.0);
 			l4.setLon(36.9);
+			addLugar(l4);
+			
+			Lugar l5 = new Lugar();
+			l5.setId("6");
+			l5.setNombre("Estadio Barcelona");
+			l5.setCodigoPostal(52489);
+			l5.setDireccion("Calle de Alcalá de Guadaíra - Barcelona");
+			l5.setLat(41.3887901);
+			l5.setLon(2.1589899);
 			addLugar(l4);
 			
 			//CREAMOS LAS CANCIONES;
@@ -222,6 +234,133 @@ public class MapWITMRepository {
 			addEvento(v4);
 
 
+			// CREO LAS PREDICCIONES 
+			
+			Prediccion p1 = new Prediccion();
+			p1.setId("pr1");
+			p1.setLugar("Sevilla");
+			p1.setLat(7.7);
+			p1.setLon(50.2);
+			p1.setTempMax(289.5);
+			p1.setTempMin(289.);
+			p1.setHumedad(71);
+			p1.setPresionAt(1017);
+			p1.setVelocidadViento(6.33);
+			p1.setDescripcion("Cielos despejados");
+			p1.setFechayhora("2020-04-15 12:00:00");
+			addPrediccion(p1);
+			
+			Prediccion p2 = new Prediccion();
+			p2.setId("pr2");
+			p2.setLugar("Sevilla");
+			p2.setLat(7.7);
+			p2.setLon(50.2);
+			p2.setTempMax(289.5);
+			p2.setTempMin(289.);
+			p2.setHumedad(71);
+			p2.setPresionAt(1017);
+			p2.setVelocidadViento(6.33);
+			p2.setDescripcion("Cielos despejados");
+			p2.setFechayhora("2020-04-15 18:00:00");
+			addPrediccion(p2);
+
+			Prediccion p3 = new Prediccion();
+			p3.setId("pr3");
+			p3.setLugar("Sevilla");
+			p3.setLat(7.7);
+			p3.setLon(50.2);
+			p3.setTempMax(289.5);
+			p3.setTempMin(289.);
+			p3.setHumedad(71);
+			p3.setPresionAt(1017);
+			p3.setVelocidadViento(6.33);
+			p3.setDescripcion("Cielos despejados");
+			p3.setFechayhora("2020-04-15 21:00:00");
+			addPrediccion(p3);
+
+			Prediccion p4 = new Prediccion();
+			p4.setId("pr4");
+			p4.setLugar("Madrid");
+			p4.setLat(79.0);
+			p4.setLon(36.9);
+			p4.setTempMax(288.65);
+			p4.setTempMin(286.4);
+			p4.setHumedad(83);
+			p4.setPresionAt(1017);
+			p4.setVelocidadViento(6.33);
+			p4.setDescripcion("Lluvia abundante");
+			p4.setFechayhora("2020-04-16 12:00:00");
+			addPrediccion(p4);
+
+			Prediccion p5 = new Prediccion();
+			p5.setId("pr5");
+			p5.setLugar("Madrid");
+			p5.setLat(79.0);
+			p5.setLon(36.9);
+			p5.setTempMax(288.65);
+			p5.setTempMin(275.);
+			p5.setHumedad(83);
+			p5.setPresionAt(1017);
+			p5.setVelocidadViento(6.33);
+			p5.setDescripcion("Lluvia abundante");
+			p5.setFechayhora("2020-04-16 18:00:00");
+			addPrediccion(p5);
+
+			Prediccion p6 = new Prediccion();
+			p6.setId("pr6");
+			p6.setLugar("Madrid");
+			p6.setLat(79.0);
+			p6.setLon(36.9);
+			p6.setTempMax(276.65);
+			p6.setTempMin(275.5);
+			p6.setHumedad(85);
+			p6.setPresionAt(1017);
+			p6.setVelocidadViento(6.33);
+			p6.setDescripcion("Lluvia abundante");
+			p6.setFechayhora("2020-04-16 21:00:00");
+			addPrediccion(p6);
+
+			Prediccion p7 = new Prediccion();
+			p7.setId("pr7");
+			p7.setLugar("Barcelona");
+			p7.setLat(41.3887901);
+			p7.setLon(2.1589899);
+			p7.setTempMax(289.5);
+			p7.setTempMin(287.);
+			p7.setHumedad(70);
+			p7.setPresionAt(1017);
+			p7.setVelocidadViento(6.33);
+			p7.setDescripcion("Cielo nublado");
+			p7.setFechayhora("2020-04-17 12:00:00");
+			addPrediccion(p7);
+
+			Prediccion p8 = new Prediccion();
+			p8.setId("pr8");
+			p8.setLugar("Barcelona");
+			p8.setLat(41.3887901);
+			p8.setLon(2.1589899);
+			p8.setTempMax(289.5);
+			p8.setTempMin(280.);
+			p8.setHumedad(71);
+			p8.setPresionAt(1017);
+			p8.setVelocidadViento(6.33);
+			p8.setDescripcion("Cielo nublado");
+			p8.setFechayhora("2020-04-17 18:00:00");
+			addPrediccion(p8);
+
+			Prediccion p9 = new Prediccion();
+			p9.setId("pr9");
+			p9.setLugar("Barcelona");
+			p9.setLat(41.3887901);
+			p9.setLon(2.1589899);
+			p9.setTempMax(289.5);
+			p9.setTempMin(286.);
+			p9.setHumedad(71);
+			p9.setPresionAt(1017);
+			p9.setVelocidadViento(6.33);
+			p9.setDescripcion("Cielo nublado");
+			p9.setFechayhora("2020-04-17 21:00:00");
+			addPrediccion(p9);
 
 	}
 
@@ -375,6 +514,48 @@ public class MapWITMRepository {
 	public Collection<Cancion> getCancionesByArtista(String idArtista) {
 		Artista artista = getArtista(idArtista);
 		return artista.getCanciones();
+	}
+
+	
+	// MÉTODOS DE LAS PREDICCIONES
+	
+	public void addPrediccion(Prediccion p) {
+		this.prediccionesMap.put(p.getFechayhora(), p);
+	}
+	
+	private Collection<Prediccion> getPredicciones(String date) {
+		Collection<Prediccion> res = new ArrayList<Prediccion>();
+		for(String s : prediccionesMap.keySet()) {
+			String[] as = s.split(" ");
+			if(as[0] == date) {
+				res.add(prediccionesMap.get(s));
+			}
+		}
+		return res;
+	}
+	
+	public Collection<Prediccion> getAllPredictions(){
+		return prediccionesMap.values();	
+	}
+	
+	public Collection<Prediccion> getAllPredictionsByDay(String date){
+		Collection<Prediccion> res = new ArrayList<Prediccion>();
+		res = getPredicciones(date);
+		return res;
+	}
+	
+	public Prediccion getPredictionByDateTime(String dateTime) {
+		return prediccionesMap.get(dateTime);
+	}
+	
+	public Collection<Prediccion> getPredictionsByPlace(Double lat, Double lon){
+		Collection<Prediccion> res = new ArrayList<Prediccion>();
+		for(Prediccion p : prediccionesMap.values()) {
+			if(p.getLat() == lat && p.getLon() == lon) {
+				res.add(p);
+			}
+		}
+		return res;
 	}
 
 }
