@@ -13,7 +13,7 @@ import aiss.model.spotify.Tracks;
 
 public class SpotifyResource {
 	private static final Logger log = Logger.getLogger(SpotifyResource.class.getName());
-	private final String token = "BQBHGZIFd9_yqLx45iWa2BGbNevPyZ8ieoRmBe1UdJ9YfggFnH5p1NEb_TZPx6Pc3sZ9k2P2bEXK4_4FNu5MBTyWx_zEzyr_Inrvx0LNkRCCwtWuI8nxJIK1fBqANcszFna-Mn-v4mAt5gg_nTkuj6Y";
+	private final String token = "BQAff1VAce3DSWs7F86V5XjipVcVoUfK6l5l86pyQxaI1tdVkHOEujkqW-5VTmpY3_lnXB_pVnVWBpXoUJrrpA3u_YvBREPMvoVYq5WGg5lA_XfaPMWtz-V85zcL062wr1khPjI4nHgygqLRGfl9x-E4TehpzcPk1co";
 	private final String baseURL = "https://api.spotify.com/v1/";
 
 	public String getIDArtist(String name) {

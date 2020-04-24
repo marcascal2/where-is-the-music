@@ -1,26 +1,28 @@
 package aiss.model.api;
 
-import java.time.LocalDateTime;
-
 public class Prediccion {
 	private String id;
 	private String lugar;
+	private Double lat;
+	private Double lon;
 	private Double tempMax;
 	private Double tempMin;
 	private Integer humedad;
 	private Integer presionAt;
 	private Double velocidadViento;
 	private String descripcion;
-	private LocalDateTime fechayhora;
+	private String fechayhora;
 
 	public Prediccion() {
 
 	}
 
-	public Prediccion(String id, String lugar, Double tempMax, Double tempMin, Integer humedad, Integer presionAt,
-			Double velocidadViento, String descripcion, LocalDateTime fechayhora) {
+	public Prediccion(String id, String lugar, Double lat, Double lon, Double tempMax, Double tempMin, Integer humedad, Integer presionAt,
+			Double velocidadViento, String descripcion, String fechayhora) {
 		this.id = id;
 		this.lugar = lugar;
+		this.lat = lat;
+		this.lon = lon;
 		this.tempMax = tempMax;
 		this.tempMin = tempMin;
 		this.humedad = humedad;
@@ -46,6 +48,22 @@ public class Prediccion {
 		this.lugar = lugar;
 	}
 
+	public Double getLat() {
+		return lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	public Double getLon() {
+		return lon;
+	}
+
+	public void setLon(Double lon) {
+		this.lon = lon;
+	}
+	
 	public Double getTempMax() {
 		return tempMax;
 	}
@@ -94,17 +112,17 @@ public class Prediccion {
 		this.descripcion = descripcion;
 	}
 
-	public LocalDateTime getFechayhora() {
+	public String getFechayhora() {
 		return fechayhora;
 	}
 
-	public void setFechayhora(LocalDateTime fechayhora) {
+	public void setFechayhora(String fechayhora) {
 		this.fechayhora = fechayhora;
 	}
 
 	@Override
 	public String toString() {
-		return "Prediccion [lugar=" + lugar + ", tempMax=" + tempMax + ", tempMin=" + tempMin
+		return "Prediccion [lugar=" + lugar + ", lat=" + lat + ", long=" + lon +", tempMax=" + tempMax + ", tempMin=" + tempMin
 				+ ", fechayhora=" + fechayhora + "]";
 	}
 

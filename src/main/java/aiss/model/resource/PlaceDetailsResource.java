@@ -12,7 +12,7 @@ import aiss.model.googlePlaces.PlaceDetails.Review;
 public class PlaceDetailsResource {
 	
 	private static final Logger log = Logger.getLogger(PlaceDetailsResource.class.getName());
-	private final String api_key = "AIzaSyAm7PbZASRhESVGEoSfx41EaebwViKKVA4";
+	private final String api_key = "AIzaSyB8b77a1_Vpcyg77ZbL-jdRjqvqXQ4fHRA";
 	private final String baseUrl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
 	
 	public PlaceDetailsResource() {

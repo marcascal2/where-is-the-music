@@ -15,7 +15,7 @@ public class YoutubeResource {
 
 	private static final Logger log = Logger.getLogger(YoutubeResource.class.getName());
 
-	private static final String API_KEY_YOUTUBE = "AIzaSyD0V9ubgMOcyxTNrgTbleEEUAlQJSd2MFU";
+	private static final String API_KEY_YOUTUBE = "AIzaSyDnI2LBDShxJyKak_z9HP9INhKn9O1MWz0";
 	private static final String URI = "https://www.googleapis.com/youtube/v3/search";
 
 	public List<Id> getVideos(String q) {
