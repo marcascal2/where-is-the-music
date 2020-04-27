@@ -44,16 +44,21 @@
 			</c:forEach>
 		</div>
 		<div class="event-information-middle">
-			<h5 class="middle-text">¡Descubre la predicción temporal para tu evento!</h5>
-			<form action="/WeatherPage" method="GET">
-				<input type="hidden" id="latitud" name="latitud"
-					value="<c:out value="${evento.embedded.venues[0].location.latitude}" />">
-				<input type="hidden" id="longitud" name="longitud"
-					value="<c:out value="${evento.embedded.venues[0].location.longitude}" />">
-				<button class="btn btn-primary btn-information-weather"
-					type="submit">¡Quiero saber el tiempo!</button>
-			</form>
-
+			<div class="card artist-event-card" style="width: 18rem;">
+				<img src="/assets/sunshine.jpg" class="card-img-top" alt="...">
+				<div class="artist-card-body" style="padding: 7%;">
+					<h5 class="middle-text">¡Descubre la predicción temporal para
+						tu evento!</h5>
+					<form action="/WeatherPage" method="GET">
+						<input type="hidden" id="latitud" name="latitud"
+							value="<c:out value="${evento.embedded.venues[0].location.latitude}" />">
+						<input type="hidden" id="longitud" name="longitud"
+							value="<c:out value="${evento.embedded.venues[0].location.longitude}" />">
+						<button class="btn btn-primary btn-information-weather"
+							type="submit">¡Quiero saber el tiempo!</button>
+					</form>
+				</div>
+			</div>
 		</div>
 		<div class="event-information-right">
 			<form action="/GoogleCalendarAddEvent" method="POST" class="card"
