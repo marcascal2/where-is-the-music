@@ -71,10 +71,8 @@ public interface WITMRepository {
 	
 	//Métodos de predicciones
 	public Collection<Prediccion> getAllPredictions();
+			
+	public Collection<Prediccion> getPredictionsByLatAndLon(Double lat, Double lon);
 	
-	public Collection<Prediccion> getAllPredictionsByDay(String date);
-	
-	public Prediccion getPredictionByDateTime(String dateTime);
-	
-	public Collection<Prediccion> getPredictionsByPlace(Double lat, Double lon);
+	public Collection<Prediccion> getPredictionsByPlace(String placeId);
 }

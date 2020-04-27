@@ -35,41 +35,30 @@ public class PrediccionResource {
 		return repository.getAllPredictions();
 	}
 
-	// Obtiene un Collection de predicciones del dia pasado como
-	// parámetro
-	@GET
-	@Path("/{date}")
-	@Produces("application/json")
-	public Collection<Prediccion> getByDate(@PathParam("date") String date) {
-		Collection<Prediccion> list = repository.getAllPredictionsByDay(date);
-		if (list == null) {
-			throw new NotFoundException("There are not predictions for day=" + date);
-		}
-		return list;
-	}
-
-	// Obtiene un Collection de predicciones del dia y hora pasado como
-	// parámetro
-	@GET
-	@Path("/{dateTime}")
-	@Produces("application/json")
-	public Prediccion getByDateTime(@PathParam("dateTime") String dateTime) {
-		Prediccion p = repository.getPredictionByDateTime(dateTime);
-		if (p == null) {
-			throw new NotFoundException("There are not predictions for dayTime=" + dateTime);
-		}
-		return p;
-	}
-
-	// Obtiene un Collection de predicciones del lugar con latitud y longitud pasados como
+	// Obtiene un Collection de predicciones del lugar con latitud y longitud
+	// pasados como
 	// parámetros
 	@GET
 	@Path("/lat={lat}&lon={lon}")
 	@Produces("application/json")
 	public Collection<Prediccion> getByPlace(@PathParam("lat") Double lat, @PathParam("lon") Double lon) {
-		Collection<Prediccion> list = repository.getPredictionsByPlace(lat, lon);
+		Collection<Prediccion> list = repository.getPredictionsByLatAndLon(lat, lon);
 		if (list == null) {
 			throw new NotFoundException("There are not predictions for place whit lat=" + lat + "and long=" + lon);
+		}
+		return list;
+	}
+
+	// Obtiene un Collection de predicciones del lugar con el id del lugar
+	// pasado como
+	// parámetro
+	@GET
+	@Path("/placeId={placeId}")
+	@Produces("application/json")
+	public Collection<Prediccion> getByPlace(@PathParam("placeId") String placeId) {
+		Collection<Prediccion> list = repository.getPredictionsByPlace(placeId);
+		if (list == null) {
+			throw new NotFoundException("There are not predictions for place whit id=" + placeId);
 		}
 		return list;
 	}
