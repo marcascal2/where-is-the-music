@@ -7,8 +7,9 @@ import aiss.model.spotify.Image;
 import aiss.model.spotify.Artist;
 import aiss.model.spotify.Track;
 
-public class SpotifyTest {
+public class SpotifyResourcesTest {
 	
+	@Test
 	public void testSpotify() {
 		SpotifyResource spotifyClient = new SpotifyResource();
 		

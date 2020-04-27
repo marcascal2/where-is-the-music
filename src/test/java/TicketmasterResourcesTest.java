@@ -9,7 +9,7 @@ import aiss.model.ticketmaster.Embedded;
 import aiss.model.ticketmaster.Event;
 import aiss.model.ticketmaster.Venue;
 
-public class TicketmasterTest {
+public class TicketmasterResourcesTest {
 
 	@Test
 	public void getMoviesTest() throws UnsupportedEncodingException {

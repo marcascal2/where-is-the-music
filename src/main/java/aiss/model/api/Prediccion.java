@@ -12,13 +12,14 @@ public class Prediccion {
 	private Double velocidadViento;
 	private String descripcion;
 	private String fechayhora;
+	private String image;
 
 	public Prediccion() {
 
 	}
 
-	public Prediccion(String id, String lugar, Double lat, Double lon, Double tempMax, Double tempMin, Integer humedad, Integer presionAt,
-			Double velocidadViento, String descripcion, String fechayhora) {
+	public Prediccion(String id, String lugar, Double lat, Double lon, Double tempMax, Double tempMin, Integer humedad,
+			Integer presionAt, Double velocidadViento, String descripcion, String fechayhora, String image) {
 		this.id = id;
 		this.lugar = lugar;
 		this.lat = lat;
@@ -30,6 +31,15 @@ public class Prediccion {
 		this.velocidadViento = velocidadViento;
 		this.descripcion = descripcion;
 		this.fechayhora = fechayhora;
+		this.image = image;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getId() {
@@ -63,7 +73,7 @@ public class Prediccion {
 	public void setLon(Double lon) {
 		this.lon = lon;
 	}
-	
+
 	public Double getTempMax() {
 		return tempMax;
 	}
@@ -122,8 +132,8 @@ public class Prediccion {
 
 	@Override
 	public String toString() {
-		return "Prediccion [lugar=" + lugar + ", lat=" + lat + ", long=" + lon +", tempMax=" + tempMax + ", tempMin=" + tempMin
-				+ ", fechayhora=" + fechayhora + "]";
+		return "Prediccion [lugar=" + lugar + ", lat=" + lat + ", long=" + lon + ", tempMax=" + tempMax + ", tempMin="
+				+ tempMin + ", fechayhora=" + fechayhora + "]";
 	}
 
 }

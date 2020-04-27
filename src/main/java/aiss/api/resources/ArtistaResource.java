@@ -31,7 +31,7 @@ public class ArtistaResource {
 	private static ArtistaResource _instance = null;
 	MapWITMRepository repository;
 
-	private ArtistaResource() {
+	public ArtistaResource() {
 		repository = MapWITMRepository.getInstance();
 	}
 

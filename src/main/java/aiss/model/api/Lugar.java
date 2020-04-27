@@ -1,5 +1,7 @@
 package aiss.model.api;
 
+import java.util.List;
+
 public class Lugar {
 	private String nombre;
 	private String id;
@@ -7,18 +9,20 @@ public class Lugar {
 	private Double lon;
 	private String direccion;
 	private Integer codigoPostal;
-	
+	private List<Prediccion> predicciones;
+
 	public Lugar() {
 		
 	}
 
-	public Lugar(String nombre, String id, Double lat, Double lon, String direccion, Integer codigoPostal) {
+	public Lugar(String nombre, String id, Double lat, Double lon, String direccion, Integer codigoPostal, List<Prediccion> predicciones) {
 		this.nombre = nombre;
 		this.id = id;
 		this.lat = lat;
 		this.lon = lon;
 		this.direccion = direccion;
 		this.codigoPostal = codigoPostal;
+		this.predicciones = predicciones;
 	}
 
 	public String getNombre() {
@@ -67,6 +71,14 @@ public class Lugar {
 	
 	public void setCodigoPostal(Integer codigoPostal) {
 		this.codigoPostal = codigoPostal;
+	}
+	
+	public List<Prediccion> getPredicciones() {
+		return predicciones;
+	}
+
+	public void setPredicciones(List<Prediccion> predicciones) {
+		this.predicciones = predicciones;
 	}
 
 	@Override
