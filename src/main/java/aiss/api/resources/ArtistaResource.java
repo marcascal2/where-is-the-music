@@ -79,20 +79,26 @@ public class ArtistaResource {
 
 	// Añade una canción a un artista - FUNCIONA
 	@POST
-	@Path("/{artistId}/songs")
+	@Path("/{artistId}/songs/{trackId}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response añadeCancionArtista(@Context UriInfo uriInfo, @PathParam("artistId") String idArtista, Cancion c) {
-		if (idArtista == null) {
+	public Response añadeCancionArtista(@Context UriInfo uriInfo, @PathParam("artistId") String idArtista, @PathParam("trackId") String idCancion) {
+		Artista art = repository.getArtista(idArtista);
+		Cancion c = repository.getCancion(idCancion);
+		if (idArtista == null || "".equals(idArtista)) {
 			throw new BadRequestException("The id of the artist must not be null");
-		} else if (c.getId() == null) {
-			throw new BadRequestException("The track must not be null");
+		} else if (idCancion==null || "".equals(idCancion)) {
+			throw new BadRequestException("The id of the song must not be null");
+		} else if (!art.getCanciones().contains(c)) {
+			repository.addArtistaCancion(idArtista, idCancion);
+		} else {
+			throw new BadRequestException(
+					"Song with id =" + idCancion + " is already contained into songs list of the artist with id =" + idArtista);
 		}
-		repository.addArtistaCancion(idArtista, c);
 		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
-		URI uri = ub.build(idArtista, c);
+		URI uri = ub.build(idArtista, idCancion);
 		ResponseBuilder resp = Response.created(uri);
-		resp.entity(idArtista);
+		resp.entity(art);
 		return resp.build();
 	}
 
@@ -101,12 +107,15 @@ public class ArtistaResource {
 	@Path("/{artistId}/songs/{trackId}")
 	public Response eliminaCancion(@PathParam("artistId") String idArtista, @PathParam("trackId") String idCancion) {
 		if (idArtista == null) {
-			throw new NotFoundException("The artist with id=" + idArtista + " was not found");
+			throw new BadRequestException("You have to introduce an artistId");
 		} else if (idCancion == null) {
-			throw new NotFoundException("The track with id=" + idCancion + " was not found");
+			throw new  BadRequestException("You have to introduce an idCancion");
+		} else if(repository.getCancionesByArtista(idArtista).contains(repository.getCancion(idCancion))) {
+			repository.removeArtistaCancion(idArtista, idCancion);
+			return Response.noContent().build();
+		} else {
+			throw new NotFoundException("The song with id="+ idCancion +" is not contained into songs list of artist with id=" + idArtista);
 		}
-		repository.eliminiaCancionDeArtista(idArtista, idCancion);
-		return Response.noContent().build();
 	}
 
 	// Elimina un artista - FUNCIONA
@@ -140,6 +149,10 @@ public class ArtistaResource {
 		// Update popularidad
 		if (artist.getPopularidad() != null) {
 			oldArtist.setPopularidad(artist.getPopularidad());
+		}
+		// Update canciones
+		if (artist.getCanciones() != null) {
+			oldArtist.setCanciones(artist.getCanciones());
 		}
 		return Response.noContent().build();
 	}

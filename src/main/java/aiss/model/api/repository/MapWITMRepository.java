@@ -16,6 +16,9 @@ public class MapWITMRepository {
 	Map<String, Evento> eventosMap;
 	Map<String, Lugar> lugaresMap;
 	Map<String, Artista> artistasMap;
+	Map<String, Cancion> cancionesMap;
+	Map<String, Prediccion> prediccionesMap;
+
 	private static MapWITMRepository instance;
 
 	public static MapWITMRepository getInstance() {
@@ -32,6 +35,8 @@ public class MapWITMRepository {
 		eventosMap = new HashMap<String, Evento>();
 		lugaresMap = new HashMap<String, Lugar>();
 		artistasMap = new HashMap<String, Artista>();
+		cancionesMap = new HashMap<String, Cancion>();
+		prediccionesMap = new HashMap<String, Prediccion>();
 
 		// CREO LAS PREDICCIONES
 
@@ -48,6 +53,7 @@ public class MapWITMRepository {
 		p1.setDescripcion("Cielos despejados");
 		p1.setFechayhora("2020-04-15 12:00:00");
 		p1.setImage("assets/sunshine.jpg");
+		addPrediccion(p1);
 
 		Prediccion p2 = new Prediccion();
 		p2.setId("pr2");
@@ -62,6 +68,7 @@ public class MapWITMRepository {
 		p2.setDescripcion("Cielos despejados");
 		p2.setFechayhora("2020-04-15 18:00:00");
 		p2.setImage("assets/sunshine.jpg");
+		addPrediccion(p2);
 
 		Prediccion p3 = new Prediccion();
 		p3.setId("pr3");
@@ -76,6 +83,7 @@ public class MapWITMRepository {
 		p3.setDescripcion("Cielos despejados");
 		p3.setFechayhora("2020-04-15 21:00:00");
 		p3.setImage("assets/sunshine.jpg");
+		addPrediccion(p3);
 
 		List<Prediccion> prediccionesSevilla = new ArrayList<Prediccion>();
 		prediccionesSevilla.add(p1);
@@ -95,6 +103,7 @@ public class MapWITMRepository {
 		p4.setDescripcion("Lluvia abundante");
 		p4.setFechayhora("2020-04-16 12:00:00");
 		p4.setImage("assets/rain.jpg");
+		addPrediccion(p4);
 
 		Prediccion p5 = new Prediccion();
 		p5.setId("pr5");
@@ -109,6 +118,7 @@ public class MapWITMRepository {
 		p5.setDescripcion("Lluvia abundante");
 		p5.setFechayhora("2020-04-16 18:00:00");
 		p5.setImage("assets/rain.jpg");
+		addPrediccion(p5);
 
 		Prediccion p6 = new Prediccion();
 		p6.setId("pr6");
@@ -123,6 +133,7 @@ public class MapWITMRepository {
 		p6.setDescripcion("Lluvia abundante");
 		p6.setFechayhora("2020-04-16 21:00:00");
 		p6.setImage("assets/rain.jpg");
+		addPrediccion(p6);
 
 		List<Prediccion> prediccionesMadrid = new ArrayList<Prediccion>();
 		prediccionesMadrid.add(p4);
@@ -142,6 +153,7 @@ public class MapWITMRepository {
 		p7.setDescripcion("Cielo nublado");
 		p7.setFechayhora("2020-04-17 12:00:00");
 		p7.setImage("assets/weather.jpg");
+		addPrediccion(p7);
 
 		Prediccion p8 = new Prediccion();
 		p8.setId("pr8");
@@ -156,6 +168,7 @@ public class MapWITMRepository {
 		p8.setDescripcion("Cielo nublado");
 		p8.setFechayhora("2020-04-17 18:00:00");
 		p8.setImage("assets/weather.jpg");
+		addPrediccion(p8);
 
 		Prediccion p9 = new Prediccion();
 		p9.setId("pr9");
@@ -170,6 +183,7 @@ public class MapWITMRepository {
 		p9.setDescripcion("Cielo nublado");
 		p9.setFechayhora("2020-04-17 21:00:00");
 		p9.setImage("assets/weather.jpg");
+		addPrediccion(p9);
 
 		List<Prediccion> prediccionesBarcelona = new ArrayList<Prediccion>();
 		prediccionesBarcelona.add(p7);
@@ -184,6 +198,7 @@ public class MapWITMRepository {
 		l.setDireccion("San Pablo-Santa Justa -  Sevilla");
 		l.setLat(15.8);
 		l.setLon(47.0);
+		l.setPredicciones(prediccionesSevilla);
 		addLugar(l);
 
 		Lugar l1 = new Lugar();
@@ -193,6 +208,7 @@ public class MapWITMRepository {
 		l1.setDireccion("Camino de los descubrimientos - Sevilla");
 		l1.setLat(5.0);
 		l1.setLon(40.3);
+		l1.setPredicciones(prediccionesSevilla);
 		addLugar(l1);
 
 		Lugar l2 = new Lugar();
@@ -202,6 +218,7 @@ public class MapWITMRepository {
 		l2.setDireccion("Avenida de Jerez");
 		l2.setLat(7.7);
 		l2.setLon(50.2);
+		l2.setPredicciones(prediccionesSevilla);
 		addLugar(l2);
 
 		Lugar l3 = new Lugar();
@@ -211,6 +228,7 @@ public class MapWITMRepository {
 		l3.setDireccion("Calle del Monasterio de El Paular - Madrid");
 		l3.setLat(83.2);
 		l3.setLon(31.5);
+		l3.setPredicciones(prediccionesMadrid);
 		addLugar(l3);
 
 		Lugar l4 = new Lugar();
@@ -220,6 +238,7 @@ public class MapWITMRepository {
 		l4.setDireccion("Avenida de Luis Aragonés - Madrid");
 		l4.setLat(79.0);
 		l4.setLon(36.9);
+		l4.setPredicciones(prediccionesMadrid);
 		addLugar(l4);
 
 		Lugar l5 = new Lugar();
@@ -229,44 +248,54 @@ public class MapWITMRepository {
 		l5.setDireccion("Calle de Alcalá de Guadaíra - Barcelona");
 		l5.setLat(41.3887901);
 		l5.setLon(2.1589899);
+		l5.setPredicciones(prediccionesBarcelona);
 		addLugar(l4);
 
 		// CREAMOS LAS CANCIONES;
 		Cancion c1 = new Cancion();
-		c1.setId("cancion1-asdfasd");
+		c1.setId("cancion1");
 		c1.setName("Locos de atar");
+		addCancion(c1);
 
 		Cancion c2 = new Cancion();
-		c2.setId("cancion2-gsfgsdfgd");
+		c2.setId("cancion2");
 		c2.setName("Amasijo de huesos");
+		addCancion(c2);
 
 		Cancion c3 = new Cancion();
-		c3.setId("cancion3-pesaddilla");
+		c3.setId("cancion3");
 		c3.setName("Tu mejor pesadilla");
+		addCancion(c3);
 
 		Cancion c4 = new Cancion();
-		c4.setId("cancion4-cicatrices");
+		c4.setId("cancion4");
 		c4.setName("Cicatrices");
+		addCancion(c4);
 
 		Cancion c5 = new Cancion();
-		c5.setId("cancion5-piarsdfa");
+		c5.setId("cancion5");
 		c5.setName("Piratas");
+		addCancion(c5);
 
 		Cancion c6 = new Cancion();
-		c6.setId("cancion6-melendasdfa");
+		c6.setId("cancion6");
 		c6.setName("Un violinista en tu tejado");
+		addCancion(c6);
 
 		Cancion c7 = new Cancion();
-		c7.setId("cancion7-eeewwfssd");
+		c7.setId("cancion7");
 		c7.setName("Tu jardín con enanitos");
+		addCancion(c7);
 
 		Cancion c8 = new Cancion();
-		c8.setId("cancion8-xcvbasd");
+		c8.setId("cancion8");
 		c8.setName("Shape of you");
+		addCancion(c8);
 
 		Cancion c9 = new Cancion();
-		c9.setId("cancion9-xvbxcvbxvbxcv");
+		c9.setId("cancion9");
 		c9.setName("Happier");
+		addCancion(c9);
 
 		List<Cancion> cancionesMelendi = new ArrayList<Cancion>();
 		cancionesMelendi.add(c6);
@@ -449,9 +478,6 @@ public class MapWITMRepository {
 	}
 
 	public Collection<Lugar> getLugares() {
-		for (Lugar l : lugaresMap.values()) {
-			System.out.println(l.getNombre());
-		}
 		return lugaresMap.values();
 	}
 
@@ -474,6 +500,39 @@ public class MapWITMRepository {
 		lugaresMap.remove(id);
 	}
 
+	public void removePrediccion(String placeId, String predId) {
+		Lugar l = lugaresMap.get(placeId);
+		Lugar newPlace = new Lugar();
+		List<Prediccion> preds = l.getPredicciones();
+		preds.remove(getPrediccion(predId));
+		newPlace.setId(l.getId());
+		newPlace.setCodigoPostal(l.getCodigoPostal());
+		newPlace.setDireccion(l.getDireccion());
+		newPlace.setLat(l.getLat());
+		newPlace.setLon(l.getLon());
+		newPlace.setNombre(l.getNombre());
+		newPlace.setPredicciones(preds);
+		lugaresMap.remove(placeId);
+		addLugar(newPlace);
+	}
+
+	public void addLugarPrediccion(String placeId, String predId) {
+		Lugar l = getLugar(placeId);
+		Lugar newPlace = new Lugar();
+		List<Prediccion> preds = l.getPredicciones();
+		Prediccion p = getPrediccion(predId);
+		preds.add(p);
+		newPlace.setCodigoPostal(l.getCodigoPostal());
+		newPlace.setDireccion(l.getDireccion());
+		newPlace.setId(l.getId());
+		newPlace.setLat(l.getLat());
+		newPlace.setLon(l.getLon());
+		newPlace.setNombre(l.getNombre());
+		newPlace.setPredicciones(preds);
+		lugaresMap.remove(placeId);
+		addLugar(newPlace);
+	}
+
 	// MÉTODOS DE LOS ARTISTAS
 
 	public Artista getArtista(String id) {
@@ -485,42 +544,55 @@ public class MapWITMRepository {
 	}
 
 	public void addArtista(Artista a) {
-		this.artistasMap.put(a.getId(), a);
+		artistasMap.put(a.getId(), a);
 	}
 
-	public void addArtistaCancion(String idArtista, Cancion c) {
-		Artista newArtist = this.artistasMap.get(idArtista);
-		newArtist.addCancion(c);
-		this.artistasMap.replace(idArtista, newArtist);
+	public void addArtistaCancion(String idArtista, String idCancion) {
+		Artista art = getArtista(idArtista);
+		Artista newArtist = new Artista();
+		List<Cancion> songs = art.getCanciones();
+		Cancion c = getCancion(idCancion);
+		songs.add(c);
+		newArtist.setGeneros(art.getGeneros());
+		newArtist.setId(art.getId());
+		newArtist.setNombre(art.getNombre());
+		newArtist.setPopularidad(art.getPopularidad());
+		newArtist.setCanciones(songs);
+		artistasMap.remove(idArtista);
+		addArtista(newArtist); 
 	}
 
 	public void removeArtistaCancion(String idArtista, String idCancion) {
-		Artista newArtist = this.artistasMap.get(idArtista);
-		newArtist.removeCancion(idCancion);
-		;
-		this.artistasMap.replace(idArtista, newArtist);
-	}
-
-	public void eliminiaCancionDeArtista(String idArtista, String idCancion) {
-		Artista newArtist = this.artistasMap.get(idArtista);
-		newArtist.removeCancion(idCancion);
-		this.artistasMap.replace(idArtista, newArtist);
+		Artista art = getArtista(idArtista);
+		Artista newArtist = new Artista();
+		Cancion c = getCancion(idCancion);
+		List<Cancion> songs = art.getCanciones();
+		songs.remove(c);
+		newArtist.setGeneros(art.getGeneros());
+		newArtist.setId(art.getId());
+		newArtist.setNombre(art.getNombre());
+		newArtist.setPopularidad(art.getPopularidad());
+		newArtist.setCanciones(songs);
+		artistasMap.remove(idArtista);
+		addArtista(newArtist); 
 	}
 
 	public void eliminaArtista(String id) {
-		this.artistasMap.remove(id);
+		artistasMap.remove(id);
 	}
 
 	// MÉTODOS DE LAS CANCIONES
 
+	private void addCancion(Cancion c) {
+		cancionesMap.put(c.getId(), c);
+	}
+
+	public Cancion getCancion(String idCancion) {
+		return cancionesMap.get(idCancion);
+	}
+
 	public Collection<Cancion> getAllCanciones() {
-		Collection<Cancion> res = new ArrayList<Cancion>();
-		for (Artista artist : artistasMap.values()) {
-			for (Cancion c : artist.getCanciones()) {
-				res.add(c);
-			}
-		}
-		return res;
+		return cancionesMap.values();
 	}
 
 	public Collection<Cancion> getCancionesByArtista(String idArtista) {
@@ -530,28 +602,21 @@ public class MapWITMRepository {
 
 	// MÉTODOS DE LAS PREDICCIONES
 
-	public Collection<Prediccion> getAllPredictions() {
-		Collection<Prediccion> res = new ArrayList<Prediccion>();
-		for (Lugar l : lugaresMap.values()) {
-			for (Prediccion p : l.getPredicciones()) {
-				res.add(p);
-			}
-		}
-		return res;
+	private void addPrediccion(Prediccion p) {
+		prediccionesMap.put(p.getId(), p);
 	}
 
-	public Collection<Prediccion> getPredictionsByLatAndLon(Double lat, Double lon) {
-		List<Prediccion> res = new ArrayList<Prediccion>();
-		for (Lugar p : lugaresMap.values()) {
-			if (p.getLat() == lat && p.getLon() == lon) {
-				res = p.getPredicciones();
-			}
-		}
-		return res;
+	public Collection<Prediccion> getAllPredictions() {
+		return prediccionesMap.values();
 	}
 
 	public Collection<Prediccion> getPredictionsByPlace(String placeId) {
 		Lugar lugar = getLugar(placeId);
 		return lugar.getPredicciones();
 	}
+
+	public Prediccion getPrediccion(String predId) {
+		return prediccionesMap.get(predId);
+	}
+
 }

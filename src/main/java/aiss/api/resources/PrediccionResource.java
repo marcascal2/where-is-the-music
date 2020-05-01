@@ -28,32 +28,18 @@ public class PrediccionResource {
 		return _instance;
 	}
 
-	// Obtiene todas las predicciones
+	// Obtiene todas las predicciones - FUNCIONA
 	@GET
 	@Produces("application/json")
 	public Collection<Prediccion> getAll() {
 		return repository.getAllPredictions();
 	}
 
-	// Obtiene un Collection de predicciones del lugar con latitud y longitud
-	// pasados como
-	// parámetros
-	@GET
-	@Path("/lat={lat}&lon={lon}")
-	@Produces("application/json")
-	public Collection<Prediccion> getByPlace(@PathParam("lat") Double lat, @PathParam("lon") Double lon) {
-		Collection<Prediccion> list = repository.getPredictionsByLatAndLon(lat, lon);
-		if (list == null) {
-			throw new NotFoundException("There are not predictions for place whit lat=" + lat + "and long=" + lon);
-		}
-		return list;
-	}
-
-	// Obtiene un Collection de predicciones del lugar con el id del lugar
+	// Obtiene un Collection de predicciones del lugar con el id del lugar - FUNCIONA
 	// pasado como
 	// parámetro
 	@GET
-	@Path("/placeId={placeId}")
+	@Path("/{placeId}")
 	@Produces("application/json")
 	public Collection<Prediccion> getByPlace(@PathParam("placeId") String placeId) {
 		Collection<Prediccion> list = repository.getPredictionsByPlace(placeId);

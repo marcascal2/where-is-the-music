@@ -43,22 +43,9 @@ public class Artista {
 		this.canciones = canciones;
 	}
 
-	public void addCancion(Cancion c) {
-		if (this.canciones == null) {
-			this.canciones = new ArrayList<Cancion>();
-		}
-		this.canciones.add(c);
-	}
-
-	public void removeCancion(String idCancion) {
-		List<Cancion> copiaCanciones = new ArrayList<Cancion>(this.canciones);
-		for(Cancion c: copiaCanciones) {
-			if(c.getId().equals(idCancion)) {
-				copiaCanciones.remove(c);
-			}
-		}
-
-		this.canciones = copiaCanciones;
+	@Override
+	public String toString() {
+		return "Artista id=" + id + ", nombre=" + nombre + ", popularidad=" + popularidad;
 	}
 
 	public void updateCancion(Cancion newTrack) {
