@@ -41,7 +41,7 @@ public class EventoResource {
 		return _instance;
 	}
 
-	// Obtiene el evento con el id pasado como parámetro - FUNCIONA Y DOCUMENTADO
+	// Obtiene el evento con el id pasado como parámetro - FUNCIONA
 	@GET
 	@Path("/{eventId}")
 	@Produces("application/json")
@@ -53,14 +53,14 @@ public class EventoResource {
 		return event;
 	}
 
-	// Obtiene los eventos - FUNCIONA Y DOCUMENTADO
+	// Obtiene los eventos - FUNCIONA
 	@GET
 	@Produces("application/json")
 	public Collection<Evento> getAll() {
 		return repository.getEventos();
 	}
 
-	// Añade un evento - FUNCIONA Y DOCUMENTADO
+	// Añade un evento - FUNCIONA
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -77,7 +77,7 @@ public class EventoResource {
 		return resp.build();
 	}
 
-	// Añade un artista a un evento - FUNCIONA Y DOCUMENTADO
+	// Añade un artista a un evento - FUNCIONA
 	@POST
 	@Path("/{eventId}/artists/{artistId}")
 	@Consumes("application/json")
@@ -101,7 +101,7 @@ public class EventoResource {
 		return resp.build();
 	}
 
-	// Elimina un artista de un evento - FUNCIONA Y DOCUMENTADO
+	// Elimina un artista de un evento - FUNCIONA
 	@DELETE
 	@Path("/{eventId}/artists/{artistId}")
 	public Response removeArtistFromEvent(@PathParam("eventId") String eventId,
@@ -117,7 +117,7 @@ public class EventoResource {
 		return Response.noContent().build();
 	}
 
-	// Añade un lugar a un evento - FUNCIONA Y DOCUMENTADO
+	// Añade un lugar a un evento - FUNCIONA
 	@POST
 	@Path("/{eventId}/places/{lugarId}")
 	@Consumes("application/json")
@@ -131,7 +131,6 @@ public class EventoResource {
 			throw new BadRequestException("The name of the artist must not be null");
 		}
 		repository.addEventoLugar(eventId, place);
-		;
 		// Builds the response. Returns the event the has just been added.
 		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
 		URI uri = ub.build(event.getId(), place.getId());
@@ -140,7 +139,7 @@ public class EventoResource {
 		return resp.build();
 	}
 
-	// Obtiene el lugar de un evento - FUNCIONA Y DOCUMENTADO
+	// Obtiene el lugar de un evento - FUNCIONA
 	@GET
 	@Path("/{eventId}/places")
 	@Produces("application/json")
@@ -152,7 +151,7 @@ public class EventoResource {
 		return place;
 	}
 
-	//  Elimina un lugar de un evento - FUNCIONA Y DOCUMENTADO
+	//  Elimina un lugar de un evento - FUNCIONA
 	@DELETE
 	@Path("/{eventId}/places/{placeId}")
 	public Response removePlaceFromEvent(@PathParam("eventId") String eventId, @PathParam("placeId") String placeId) {
@@ -168,7 +167,7 @@ public class EventoResource {
 		}
 	}
 
-	// Actualiza un evento - FUNCIONA Y DOCUMENTADO
+	// Actualiza un evento - FUNCIONA 
 	@PUT
 	@Consumes("application/json")
 	public Response updateEvent(Evento event) {
@@ -195,7 +194,7 @@ public class EventoResource {
 		return Response.noContent().build();
 	}
 
-	//Elimina un evento - FUNCIONA Y DOCUMENTADO
+	//Elimina un evento - FUNCIONA
 	@DELETE
 	@Path("/{eventId}")
 	public Response removeEvent(@PathParam("eventId") String eventId) {
